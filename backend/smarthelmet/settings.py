@@ -4,17 +4,20 @@ Django settings for SmartHelmetX project.
 
 from pathlib import Path
 from datetime import timedelta
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-smarthelmetx-dev-key-change-in-production'
-
-DEBUG = True
-
-ALLOWED_HOSTS = ['*']
+SECRET_KEY = os.getenv('SECRET_KEY')
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
 
 # Application definition
 INSTALLED_APPS = [
+    'daphne',  
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -27,6 +30,8 @@ INSTALLED_APPS = [
     'channels',
     # Local
     'api',
+    
+
 ]
 
 MIDDLEWARE = [
