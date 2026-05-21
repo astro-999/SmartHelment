@@ -1,4 +1,3 @@
-".env" 
 # Python / Django
 venv/
 __pycache__/
@@ -37,8 +36,8 @@ build/
 Thumbs.db
 desktop.ini
 
-# Arduino
+# Arduino / Firmware
 *.elf
 *.hex
 *.bin
-build/
+.pio/
